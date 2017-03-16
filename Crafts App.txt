@@ -1,0 +1,46 @@
+Craft App -- Empowering entreprenuers.
+
+Mobile app where you can find the closest and best 
+fashion designer,caterer,cobler and hand made bags seller.
+
+Signup form
+
+--Name of biz
+--Name of biz owner
+--Address/location of biz
+--Biz contact/phone number
+
+Other signup
+--FB
+--Linkedin
+--Twitter
+--IG
+
+Other Info to fill after signup
+-- Coy header img
+--Logo
+--Business address
+--staff strength
+--about business
+--Minimum delivery date
+--verification status
+--Location status eg Local/state/National/Global
+--Business Category eg Cloths/Bags/Catering/Shoes...
+--
+
+Display Products Section...
+Add to cart
+checkout 
+
+To sew express cloths
+-- Search for tailor based on location
+-- Select tailor
+-- Select style and Send style
+-- Select mode of communicating with tailor
+-- Communicate with tailor
+--- Send confirmed measurement
+-- Confirm style
+-- Confirm payment
+-- Timer starts counting.
+
+
