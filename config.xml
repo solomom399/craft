@@ -1,7 +1,7 @@
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.museeq.museeq" version="1.0.0">
-  <name>Museeq</name>
-  <description>Listen and Feel Relax.</description>
-  <author href="http://phonegap.com" email="support@phonegap.com">Everymantech</author>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.fashion.fashion" version="1.0.0">
+  <name>Fashion</name>
+  <description>The time is now...</description>
+  <author href="http://phonegap.com" email="Sobanjosodiq@gmail.com">Sobanjosodiq@gmail.com</author>
   <content src="index.html"/>
   <preference name="DisallowOverscroll" value="true"/>
   <preference name="android-minSdkVersion" value="14"/>
