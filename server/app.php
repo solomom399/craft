@@ -52,7 +52,6 @@ class App extends Craft {
 
 
 
-
 		if (isset($_POST['key']) && $_POST['key'] == 'check') {
 
 			$input = addslashes($_POST['input']);
@@ -71,7 +70,27 @@ class App extends Craft {
 			
 		}
 
-	
+
+
+
+		if (isset($_POST['key']) && $_POST['key'] == 'create_shop') {
+
+			$name_of_business = addslashes($_POST['name_of_business']);
+			$business_owner = addslashes($_POST['business_owner']);
+			$location = addslashes($_POST['location']);
+			$business_contact = addslashes($_POST['business_contact']);
+			$shop_id = substr(md5(uniqid()), 3, 7);
+			$owner_id = addslashes($_POST['user_id']);
+			
+			$sql = "INSERT INTO #__shop (owner_id, name_of_business, business_owner, location, business_contact, shop_id, date_created, time_created) VALUES ('$owner_id', '$name_of_business', '$business_owner', '$location', '$business_contact', '$shop_id', now(), now())";
+
+			if ($this->SobanjoQuery($sql)) {
+				echo json_encode(array('msg' => 'success', 'text' => 'Shop Created'));
+			} else {
+				echo json_encode(array('msg' => 'error'));
+			}
+			
+		}
 
 	}
 

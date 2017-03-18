@@ -1,6 +1,21 @@
 
-//var path = "http://localhost:2200/craft/server/app.php"
-var path = "http://everymantechnologies.com/craft_server/app/app.php"
+var path = "http://localhost:2200/craft/server/app.php"
+// var path = "http://everymantechnologies.com/craft_server/app/app.php"
+
+
+
+
+document.addEventListener("backbutton", onBackKeyDown, false);
+
+function onBackKeyDown(e) {
+   e.preventDefault();
+    var conf = confirm("Are you sure you want to exit this app")
+    if(conf){
+        navigator.app.exitApp();
+    }
+}
+
+
 
 var sobanjo = function () {
 	var self = this
@@ -112,6 +127,7 @@ $("input[name=username]").bind('keyup blur', function () {
 // =======================================================================
 
 $(".logout").click(function () {
+    $('.button-collapse').sideNav('hide')
     s.load('Signing out..')
     localStorage.removeItem('member_log')
     localStorage.removeItem('member')
@@ -163,8 +179,7 @@ $(function () {
                     s.error(resp.text)
                 }
             }, function (a, b, c) {
-            	s.error()
-                console.log(a+" "+b+" "+c)	
+            	s.error()	
             })
             
             return false
@@ -207,6 +222,7 @@ $(function () {
             	if (resp.msg != 'error') {
             		s.success(resp.msg, function () {
 	            		$("a[point=login]").trigger('click')
+                        $('#sign_up').trigger('reset')
 	            	})
             	} else {
             		s.error()
@@ -226,6 +242,55 @@ $(function () {
 // ================================================================
 
 
+$(function () {
+    $('#create_shop_form').validate({
+        highlight: function (input) {
+            
+            $(input).parents('.form-line').addClass('error');
+        },
+        unhighlight: function (input) {
+            $(input).parents('.form-line').removeClass('error');
+        },
+        errorPlacement: function (error, element) {
+            $(element).parents('.input-group').append(error);
+            $(element).parents('.form-group').append(error);
+        },
+        submitHandler: function (form) {
+            s.load('Processing..')
+
+            var details = JSON.parse(localStorage.getItem('member'))
+            var formData = new FormData(form)
+            formData.append('key', 'create_shop')
+            formData.append('user_id', details.user_id)
+
+            s.makeUse(formData, function (resp) {
+                if (resp.msg == 'success') {
+                    swal({
+                        title: resp.text,
+                        text: "",
+                        type : 'success',
+                        confirmButtonClass : 'waves-effect waves-light btn btn-lg bg-pink',
+                        confirmButtonColor: "#E91E63"
+
+                    })
+                    $('#create_shop_form').trigger('reset')
+                } else {
+                    s.error()
+                }
+                
+            }, function (a, b, c) {
+                s.error()
+            })
+            
+            return false
+        }
+    });
+});
+
+
+
+// ================================================================
+
 $('select').material_select();
 
 // ===============================================================
@@ -238,3 +303,46 @@ $('.button-collapse').sideNav({
         draggable: true // Choose whether you can drag to open on touch screens
     }
 )
+
+
+// =================================================================
+
+
+$(".close_page").on('click', function() {
+    $('.button-collapse').sideNav('hide')
+    var handle = $(this).attr('data-close');
+    $("."+handle).removeClass('bounceInRight').addClass('bounceInLeft').css({
+        'left': '-2000px'
+    })
+})
+
+// =================================================================
+
+
+$(".open_page").on('click', function() {
+    $('.button-collapse').sideNav('hide')
+    var handle = $(this).attr('data-open');
+    $("."+handle).removeClass('bounceInLeft').addClass('bounceInRight').css({
+        'left': '0px'
+   })
+})
+
+// =================================================================
+
+$(document).ready(function () {
+    var details = JSON.parse(localStorage.getItem('member'))
+
+    $(".name").html(details.fullname)
+    $(".email").html(details.email)    
+})
+
+
+
+
+
+
+
+
+
+
+
