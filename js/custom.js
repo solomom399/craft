@@ -1,6 +1,6 @@
 
-var path = "http://localhost:2200/craft/server/app.php"
-// var path = "http://everymantechnologies.com/craft_server/app/app.php"
+// var path = "http://localhost:2200/craft/server/app.php"
+var path = "http://everymantechnologies.com/craft_server/app/app.php"
 
 
 
